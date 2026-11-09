@@ -1,0 +1,58 @@
+/* ===== draw toolbar / colour popover / freehand ===== */
+.sw-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--glass-text) 25%, transparent);
+  display: inline-block;
+}
+.swatch-pop {
+  min-width: 0;
+  padding: 10px;
+}
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 24px);
+  gap: 6px;
+  padding: 4px 2px 8px;
+}
+.swatch-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--glass-text) 22%, transparent);
+  padding: 0;
+  cursor: pointer;
+}
+.swatch-btn.on {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.swatch-custom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  padding: 4px 2px;
+  color: var(--glass-text);
+}
+.swatch-custom input {
+  margin-left: auto;
+  width: 34px;
+  height: 22px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+#viewport.drawing {
+  cursor: crosshair;
+}
+.node.freehand {
+  background: transparent;
+  border: 1px dashed transparent;
+  box-shadow: none;
+}
+.node.freehand:hover,
+.node.freehand.selected {
+  border-color: var(--line);
+}

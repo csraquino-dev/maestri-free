@@ -1,0 +1,112 @@
+/* ===== git changes panel ===== */
+.git-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.git-head select {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 4px 8px;
+}
+.git-sync {
+  font-size: 12px;
+  color: var(--muted);
+}
+.git-cols {
+  display: flex;
+  gap: 12px;
+  min-height: 340px;
+  max-height: 56vh;
+}
+.git-left {
+  flex: 0 0 42%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.git-lists {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 4px;
+}
+.git-sec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px 2px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.btn-ghost.sm {
+  padding: 1px 8px;
+  font-size: 11px;
+}
+.git-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.git-file:hover,
+.git-file.on {
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+}
+.git-path {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 12.5px;
+}
+.git-file .git {
+  font-weight: 700;
+  font-size: 11px;
+  width: 14px;
+  text-align: center;
+}
+.git-msg {
+  width: 100%;
+  resize: vertical;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: var(--text);
+  user-select: text;
+}
+.git-diff {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-2);
+  font:
+    12px/1.5 'Cascadia Mono',
+    Consolas,
+    monospace;
+  user-select: text;
+  white-space: pre;
+}
+.git-diff .add {
+  background: color-mix(in srgb, #30d158 20%, transparent);
+}
+.git-diff .del {
+  background: color-mix(in srgb, #ff453a 20%, transparent);
+}
+.git-diff .hunk {
+  color: var(--primary);
+}

@@ -1,0 +1,8 @@
+#!/bin/sh
+# POSIX shim so `omaestri` also works from Git Bash / WSL-interop shells.
+DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -n "$MAESTRI_NODE" ]; then
+  ELECTRON_RUN_AS_NODE=1 exec "$MAESTRI_NODE" "$DIR/omaestri.js" "$@"
+else
+  exec node "$DIR/omaestri.js" "$@"
+fi

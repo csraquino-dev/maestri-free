@@ -1,0 +1,71 @@
+/* ===== note stack (fichário) ===== */
+.node.stack {
+  overflow: visible;
+}
+.node.stack .node-body {
+  display: flex;
+  flex-direction: column;
+}
+.stack-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 4px 6px 0;
+  overflow-x: auto;
+  flex: none;
+  scrollbar-width: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.stack-tab {
+  flex: none;
+  max-width: 150px;
+  padding: 4px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: rgba(0, 0, 0, 0.05);
+  color: #3a3a3a;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.stack-tab:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.stack-tab.on {
+  background: var(--note, #fefde8);
+  font-weight: 600;
+  margin-bottom: -1px;
+}
+.stack-page {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.stack-page .node-body {
+  position: absolute;
+  inset: 0;
+}
+.node.stack::before,
+.node.stack::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  height: 100%;
+  border-radius: 10px;
+  background: var(--note, #fefde8);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  z-index: -1;
+}
+.node.stack::before {
+  top: 5px;
+  transform: translateY(3px);
+  opacity: 0.75;
+}
+.node.stack::after {
+  top: 10px;
+  transform: translateY(6px);
+  opacity: 0.5;
+}

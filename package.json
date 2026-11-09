@@ -1,0 +1,98 @@
+{
+  "name": "maestri-free",
+  "version": "0.1.0",
+  "description": "Windows port of open-maestri: a canvas for terminals, notes, portals and AI agents",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test --test-force-exit tests/backend.test.js tests/bands.test.js tests/cable-ties.test.js tests/chat.test.js tests/cross-floor.test.js tests/docker.test.js tests/features.test.js tests/git-ops.test.js tests/palette-rank.test.js tests/partituras.test.js tests/portal-design.test.js tests/prompter.test.js tests/pty-lifecycle.test.js tests/pull-requests.test.js tests/rope-sim.test.js tests/shape-recognizer.test.js tests/sidebar-layout.test.js tests/stacks.test.js tests/workspace-io.test.js",
+    "selftest": "electron . --selftest",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win nsis portable",
+    "icons": "node scripts/build-icons.js && electron scripts/make-icon.js",
+    "i18n": "node scripts/check-i18n.js"
+  },
+  "license": "GPL-3.0-or-later",
+  "type": "commonjs",
+  "dependencies": {
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/headless": "^6.0.0",
+    "@xterm/xterm": "^6.0.0",
+    "dompurify": "^3.4.17",
+    "marked": "^18.1.3",
+    "node-pty": "^1.1.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
+    "lucide-static": "^1.70.0"
+  },
+  "build": {
+    "appId": "dev.open-maestri.windows",
+    "productName": "open-maestri",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main/**",
+      "renderer/**",
+      "cli/**",
+      "assets/**",
+      "node_modules/**",
+      "package.json",
+      "LICENSE",
+      "NOTICE",
+      "!**/*.pdb",
+      "!node_modules/node-pty/prebuilds/darwin-*",
+      "!node_modules/node-pty/prebuilds/linux-*",
+      "!node_modules/node-pty/prebuilds/win32-arm64",
+      "!node_modules/node-pty/{src,deps,third_party,scripts,typings}/**",
+      "!node_modules/electron/dist/**",
+      "!node_modules/electron-builder/**",
+      "tests/fixtures/**",
+      "build/icon.png",
+      "!tests/*.js"
+    ],
+    "extraResources": [
+      {
+        "from": "cli",
+        "to": "cli"
+      },
+      {
+        "from": "assets",
+        "to": "assets"
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/node-pty/**"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": true,
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "language": "1046"
+    },
+    "npmRebuild": false
+  },
+  "author": "maestri-free contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csraquino-dev/maestri-free.git"
+  },
+  "homepage": "https://github.com/csraquino-dev/maestri-free",
+  "bugs": {
+    "url": "https://github.com/csraquino-dev/maestri-free/issues"
+  }
+}

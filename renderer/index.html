@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: file: https: http:; font-src 'self' data:; connect-src 'none'; frame-src 'none'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>open-maestri</title>
+  <link rel="stylesheet" href="../node_modules/@xterm/xterm/css/xterm.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="chrome-basics.css" />
+  <link rel="stylesheet" href="glass-theme.css" />
+  <link rel="stylesheet" href="prompter.css" />
+  <link rel="stylesheet" href="palette.css" />
+  <link rel="stylesheet" href="drawing.css" />
+  <link rel="stylesheet" href="note-stack.css" />
+  <link rel="stylesheet" href="band.css" />
+  <link rel="stylesheet" href="git-panel.css" />
+  <link rel="stylesheet" href="floors-ties-chat.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <div class="side-head">
+        <label class="sb-search"><span data-icon="search" data-size="16"></span><input id="sb-search" type="text" spellcheck="false" autocomplete="off" /></label>
+        <button id="btn-new-ws" class="icon-btn" data-i18n-title="New workspace" data-icon="plus" data-size="20"></button>
+      </div>
+      <div class="side-label" data-i18n="Workspaces"></div>
+      <div id="ws-list"></div>
+      <div class="side-foot">
+        <button id="sb-new-group" class="side-link small"><span data-icon="folder" data-size="14"></span><span data-i18n="New group"></span></button>
+        <span class="side-foot-icons">
+          <button id="btn-routines" class="icon-btn small" data-i18n-title="Routines" data-icon="calendar-clock" data-size="15"></button>
+          <button id="btn-prefs" class="icon-btn small" data-i18n-title="Preferences" data-icon="settings" data-size="15"></button>
+        </span>
+      </div>
+      <div id="sb-resize" role="separator" aria-orientation="vertical"></div>
+    </aside>
+
+    <main id="stage">
+      
+      <div id="floors-bar"></div>
+      <div id="banner" hidden></div>
+      <div id="viewport">
+        <div id="world">
+          <svg id="ropes" width="1" height="1"></svg>
+          <div id="nodes"></div>
+        </div>
+        <svg id="overlay"></svg>
+        <div id="marquee" hidden></div>
+        <div id="ws-title"></div>
+        <div id="chrome-top">
+          <div id="main-pill" class="glass pill"></div>
+          <div id="ctx-slot"></div>
+        </div>
+        <div id="chrome-right" class="glass pill">
+          <button class="gbtn" id="btn-palette" data-i18n-title="Command palette (Ctrl+K)" data-icon="search" data-size="20"></button>
+          <span class="gdiv"></span>
+          <button class="gbtn" id="btn-undo" data-i18n-title="Undo (Ctrl+Z)" data-icon="undo-2" data-size="20"></button>
+          <button class="gbtn" id="btn-redo" data-i18n-title="Redo (Ctrl+Y)" data-icon="redo-2" data-size="20"></button>
+          <span class="gdiv"></span>
+          <button class="gbtn" id="btn-ide" data-i18n-title="Open folder in IDE" data-icon="code-xml" data-size="20"></button>
+        </div>
+        <div id="chrome-zoom" class="glass pill">
+          <button class="gbtn" id="zoom-out" data-i18n-title="Zoom out" data-icon="minus" data-size="18"></button>
+          <span id="zoom-label">100%</span>
+          <button class="gbtn" id="zoom-in" data-i18n-title="Zoom in" data-icon="plus" data-size="18"></button>
+          <button class="gbtn" id="zoom-fit" data-i18n-title="Fit everything (Ctrl+0)" data-icon="maximize-2" data-size="18"></button>
+        </div>
+        <canvas id="minimap" width="200" height="130"></canvas>
+        <div id="empty-hint" hidden>
+          <span data-icon="layout-grid" data-size="44"></span>
+          <h2 data-i18n="Empty canvas"></h2>
+          <p data-i18n="Add a Terminal, Note, Files or Portal from the toolbar. Drag the dot of one node onto another to connect them."></p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+
+  <script src="../node_modules/@xterm/xterm/lib/xterm.js"></script>
+  <script src="../node_modules/@xterm/addon-fit/lib/addon-fit.js"></script>
+  <script src="../node_modules/marked/lib/marked.umd.js"></script>
+  <script src="../node_modules/dompurify/dist/purify.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
